@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aventuras Educativas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="app">
+
+    <!-- MENÚ PRINCIPAL -->
+    <section id="main-menu" class="screen active">
+      <h1>🎓 Aventuras Educativas</h1>
+      <p class="subtitle">Elige tu aventura</p>
+      <div class="menu-cards">
+        <button class="menu-card" id="btn-go-math">
+          <span class="menu-icon">🧮</span>
+          <span class="menu-title">Aventura Matemática</span>
+          <span class="menu-desc">Sumas y restas de dos cifras</span>
+        </button>
+        <button class="menu-card" id="btn-go-reading">
+          <span class="menu-icon">📚</span>
+          <span class="menu-title">Aventura de Lectura</span>
+          <span class="menu-desc">Lee, comprende y escribe</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== JUEGO DE MATEMÁTICAS ===================== -->
+    <section id="math-game" class="screen">
+      <button class="btn-back" data-target="main-menu">← Menú</button>
+
+      <div id="math-menu-view" class="view active">
+        <h1>🎯 Aventura Matemática</h1>
+        <p class="subtitle">¡Resuelve y diviértete!</p>
+        <div class="card big-card">
+          <div class="emoji-big">🚀</div>
+          <h2>¡Hola pequeño matemático!</h2>
+          <p>¿Estás listo para una aventura con números?</p>
+        </div>
+        <button class="btn-primary" id="btn-start-math">¡Empezar Aventura! 🎮</button>
+      </div>
+
+      <div id="math-play-view" class="view">
+        <div class="hud">
+          <div class="hud-item"><span id="math-score">0</span> ⭐</div>
+          <div class="hud-item" id="math-level-badge">🌱 Sumas Fáciles</div>
+          <div class="hud-item" id="math-hearts">❤️❤️❤️</div>
+        </div>
+
+        <div class="card operation-card" id="math-anim-wrap">
+          <div class="vertical-op">
+            <div class="op-num" id="op-num1">23</div>
+            <div class="op-num op-row2"><span id="op-symbol">+</span><span id="op-num2">45</span></div>
+            <div class="op-line"></div>
+            <div class="op-answer" id="op-answer">?</div>
+          </div>
+        </div>
+
+        <div class="keypad">
+          <button class="key" data-num="1">1</button>
+          <button class="key" data-num="2">2</button>
+          <button class="key" data-num="3">3</button>
+          <button class="key" data-num="4">4</button>
+          <button class="key" data-num="5">5</button>
+          <button class="key" data-num="6">6</button>
+          <button class="key" data-num="7">7</button>
+          <button class="key" data-num="8">8</button>
+          <button class="key" data-num="9">9</button>
+          <button class="key key-action" id="math-clear">Borrar</button>
+          <button class="key" data-num="0">0</button>
+          <button class="key key-confirm" id="math-submit">¡Listo!</button>
+        </div>
+
+        <div class="feedback" id="math-feedback"></div>
+      </div>
+
+      <div id="math-result-view" class="view">
+        <div class="card big-card">
+          <div class="emoji-big">🎉</div>
+          <h2>¡Muy bien jugado!</h2>
+          <div class="big-number" id="math-final-score">0</div>
+          <p>respuestas correctas</p>
+          <p class="encouragement" id="math-final-msg"></p>
+        </div>
+        <button class="btn-primary" id="btn-restart-math">🔄 ¡Jugar de Nuevo!</button>
+      </div>
+    </section>
+
+    <!-- ===================== JUEGO DE LECTOESCRITURA ===================== -->
+    <section id="reading-game" class="screen">
+      <button class="btn-back" data-target="main-menu">← Menú</button>
+
+      <div id="reading-menu-view" class="view active">
+        <h1>📚 Aventura de Lectura</h1>
+        <p class="subtitle">¡Lee, comprende y crea!</p>
+        <div class="card big-card">
+          <div class="emoji-big">🌟</div>
+          <h2>¡Vamos a leer juntos!</h2>
+          <p>Leerás un cuento, responderás preguntas y escribirás tu propia historia</p>
+          <div class="mini-icons">
+            <div class="mini-icon">📖<br>Leer</div>
+            <div class="mini-icon">💡<br>Comprender</div>
+            <div class="mini-icon">✏️<br>Escribir</div>
+          </div>
+        </div>
+        <button class="btn-primary" id="btn-start-reading">¡Empezar Aventura! 🚀</button>
+      </div>
+
+      <div id="reading-story-view" class="view">
+        <div class="hud">
+          <div class="hud-item">📖 Leyendo</div>
+          <div class="hud-item" id="reading-timer">0:00</div>
+        </div>
+        <div class="card">
+          <h2 id="story-title">Título del cuento</h2>
+          <div class="story-box">
+            <p id="story-text"></p>
+          </div>
+        </div>
+        <button class="btn-primary" id="btn-finish-reading">¡Ya terminé de leer! 📚</button>
+      </div>
+
+      <div id="reading-questions-view" class="view">
+        <div class="hud">
+          <div class="hud-item" id="question-progress">Pregunta 1 de 3</div>
+          <div class="hud-item" id="reading-hearts">❤️❤️❤️</div>
+        </div>
+        <div class="card">
+          <h3 id="question-text"></h3>
+          <div class="options" id="question-options"></div>
+        </div>
+        <div class="feedback" id="question-feedback"></div>
+      </div>
+
+      <div id="reading-writing-view" class="view">
+        <div class="hud">
+          <div class="hud-item">✏️ ¡Hora de escribir!</div>
+          <div class="hud-item" id="reading-level-badge">📝 Aprendiz</div>
+        </div>
+        <div class="card">
+          <h3>✍️ Tu turno de crear</h3>
+          <p class="prompt-box" id="writing-prompt"></p>
+          <textarea id="user-story" maxlength="500" placeholder="Escribe tu historia aquí... ¡Usa tu imaginación!"></textarea>
+          <div class="char-count"><span id="char-count">0</span>/500 caracteres</div>
+        </div>
+        <button class="btn-primary" id="btn-submit-story">¡Terminar Historia! 📝</button>
+        <div class="feedback" id="writing-feedback"></div>
+      </div>
+
+      <div id="reading-result-view" class="view">
+        <div class="card big-card">
+          <div class="emoji-big">🎉</div>
+          <h2>¡Increíble trabajo!</h2>
+          <div class="result-grid">
+            <div class="result-box"><div class="big-number" id="reading-final-score">0</div><p>Respuestas correctas</p></div>
+            <div class="result-box"><div class="big-number" id="reading-char-count">0</div><p>Caracteres escritos</p></div>
+          </div>
+          <p class="encouragement" id="reading-final-msg"></p>
+          <div class="story-box left-align">
+            <strong>Tu historia:</strong>
+            <p id="final-story-text"></p>
+          </div>
+        </div>
+        <button class="btn-primary" id="btn-restart-reading">🔄 ¡Otra Aventura!</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/stories.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
